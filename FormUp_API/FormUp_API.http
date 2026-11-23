@@ -1,0 +1,7 @@
+# Checks API startup using the local HTTPS launch profile.
+@FormUp_API_HostAddress = https://localhost:7174
+
+GET {{FormUp_API_HostAddress}}/health
+Accept: application/json
+
+###

@@ -1,0 +1,35 @@
+# Calls the configured reminder endpoint using GitHub repository secrets.
+
+name: FormUp 12-hour reminders
+
+on:
+  schedule:
+    - cron: '2-59/5 * * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Ask API to send reminders
+        env:
+          REMINDER_URL: ${{ secrets.REMINDER_URL }}
+          REMINDER_SECRET: ${{ secrets.REMINDER_SECRET }}
+        run: |
+          if [ -z "$REMINDER_URL" ] || [ -z "$REMINDER_SECRET" ]; then
+            echo "Configure REMINDER_URL and REMINDER_SECRET in repository Actions secrets."
+            exit 1
+          fi
+          case "$REMINDER_URL" in
+            https://*) ;;
+            *) echo "REMINDER_URL must use HTTPS."; exit 1 ;;
+          esac
+          curl --proto '=https' --fail-with-body --show-error --silent --retry 2 \
+            --max-time 120 -X POST \
+            -H "Content-Length: 0" \
+            -H "X-Reminder-Secret: $REMINDER_SECRET" \
+            "$REMINDER_URL"

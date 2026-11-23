@@ -1,0 +1,4 @@
+<!-- Includes the FormUp API project in the solution. -->
+<Solution>
+  <Project Path="FormUp_API/FormUp_API.csproj" />
+</Solution>
