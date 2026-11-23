@@ -273,3 +273,7 @@ Never commit:
 Store server credentials in the hosting environment and workflow secrets in GitHub Actions secrets. Keep configuration files in the repository free of sensitive values.
 
 For an independent deployment, use your own Firebase project, backend hosting and reminder configuration.
+
+## Contributors
+
+Nafees Sampson, Connor McClure and Thomas Newman.
