@@ -1,4 +1,5 @@
 # FormUp - Football Coaching API
+[![Match Reminders](https://github.com/nafsampson/Coaching-API/actions/workflows/formup-reminders.yml/badge.svg?branch=main)](https://github.com/nafsampson/Coaching-API/actions/workflows/formup-reminders.yml)
 
 **The backend powering FormUp’s football coaching platform.**
 
